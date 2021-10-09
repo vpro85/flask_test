@@ -31,23 +31,12 @@ video_update_args.add_argument("name", type=str, help="Name of the video is requ
 video_update_args.add_argument("views", type=int, help="Views of the video is required")
 video_update_args.add_argument("likes", type=int, help="Likes on the video is required")
 
-videos = {}
 resource_fields = {
     'id': fields.Integer,
     'name': fields.String,
     'views': fields.Integer,
     'likes': fields.Integer
 }
-
-
-def abort_if_video_id_does_not_exists(video_id):
-    if video_id not in videos:
-        abort(404, message="Video id is not valid...")
-
-
-def abort_if_video_exists(video_id):
-    if video_id in videos:
-        abort(409, message="Video with this ID already exists...")
 
 
 class Video(Resource):
